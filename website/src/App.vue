@@ -1,13 +1,9 @@
 <template>
-  <div>
-    <Button_ />
+  <div id="app" class="flex justify-center items-center h-screen">
+    <Gluck />
   </div>
 </template>
 
 <script setup>
-  import Button_ from './components/Button_.vue'
+  import Gluck from './components/Gluck.vue';
 </script>
-
-<style lang="scss" scoped>
-
-</style>
