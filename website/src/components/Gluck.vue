@@ -17,7 +17,7 @@
     import { ref, onMounted } from 'vue';
 
     // Erstellt eine reaktive Referenz für die Standesämter und das ausgewählte Standesamt
-    const standesämter = ref([]);
+    const standesaemter = ref([]);
     const ausgewaehltesStandesamt = ref(null);
 
     // Definiert die Funktion 'ladeStandesämter'
@@ -28,7 +28,7 @@
             // Wandelt die Antwort in ein JSON-Objekt um
             const data = await response.json();
             // Speichert die Daten der Standesämter in der reaktiven Referenz 'standesämter'
-            standesämter.value = data.features.map(feature => feature.properties);
+            standesaemter.value = data.features.map(feature => feature.properties);
         } catch (error) {
             // Gibt einen Fehler aus, wenn beim Laden der Standesämter ein Problem auftritt
             console.error("Fehler beim Laden der Standesämter:", error);
@@ -38,11 +38,11 @@
     // Definiert die Funktion 'waehleStandesamt'
     const waehleStandesamt = () => {
         // Überprüft, ob Standesämter vorhanden sind
-        if (standesämter.value.length > 0) {
+        if (standesaemter.value.length > 0) {
             // Wählt ein zufälliges Standesamt aus
-            const zufaelligerIndex = Math.floor(Math.random() * standesämter.value.length);
+            const zufaelligerIndex = Math.floor(Math.random() * standesaemter.value.length);
             // Speichert das ausgewählte Standesamt in der reaktiven Referenz 'ausgewaehltesStandesamt'
-            ausgewaehltesStandesamt.value = standesämter.value[zufaelligerIndex];
+            ausgewaehltesStandesamt.value = standesaemter.value[zufaelligerIndex];
         }
     };
     // Wartet bis die Komponente geladen ist und ruft dann die Funktion 'ladeStandesämter' auf
